@@ -43,9 +43,10 @@ public class AddNewEmployee extends HttpServlet {
                 out.println("ERROR"+ error.getMessage());
             }
         } catch (Exception e) {
-            System.out.println("ERROR updating");
+            System.out.println("ERROR adding new");
             out.println("ERROR"+ e.getMessage());
         }
+        out.println("SUCCESS");
     }//end doGet
 }//end class
 

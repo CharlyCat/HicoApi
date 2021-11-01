@@ -16,7 +16,7 @@ public class UpdateEmployeeRecord extends HttpServlet {
         // Get an output writer to write the response message into the network socket
         PrintWriter out = response.getWriter();
         //Construct JSON response object
-        try {/*
+        try {
             // Step 1: Allocate a database 'Connection' object
             // Sample code format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
             Connection conn = DriverManager.getConnection(
@@ -25,18 +25,28 @@ public class UpdateEmployeeRecord extends HttpServlet {
             // Step 2: Allocate a 'Statement' object in the Connection
             Statement stmt = conn.createStatement();
             // Step 3: Execute a SQL SELECT query
-            String sqlStr = "UPDATE INTO `hico-demo-db`.`employeelist` (`employeeID`, `firstName`, `lastName`, `salutation`, `profileColour`, `gender`, `grossSalary`)";
-            sqlStr += "SET(" + "'" + request.getParameter("employeeID") + "'" + ",";
-            sqlStr += "'" + request.getParameter("firstName") + "'" + ",";
-            sqlStr += "'" + request.getParameter("lastName") + "'" + ",";
-            sqlStr += "'" + request.getParameter("salutation") + "'" + ",";
-            sqlStr += "'" + request.getParameter("profileColour") + "'" + ",";
-            sqlStr += "'" + request.getParameter("gender") + "'" + ",";
-            sqlStr += "'" + request.getParameter("grossSalary") + "'" + ")";
-            System.out.println(sqlStr);*/
+            String sqlStr = "UPDATE `hico-demo-db`.`employeelist` SET ";
+            sqlStr += "firstName =" + "'" + request.getParameter("firstName") + "'" + ",";
+            sqlStr += "lastName =" + "'" + request.getParameter("lastName") + "'" + ",";
+            sqlStr += "salutation =" + "'" + request.getParameter("salutation") + "'" + ",";
+            sqlStr += "profileColour =" + "'" + request.getParameter("profileColour") + "'" + ",";
+            sqlStr += "gender =" + "'" + request.getParameter("gender") + "'" + ",";
+            sqlStr += "grossSalary =" + request.getParameter("grossSalary") + " ";
+            sqlStr += "WHERE employeeID =" + request.getParameter("employeeID");
+            System.out.println(sqlStr);
+            try {
+                //Send the query to the server
+                Integer rset = stmt.executeUpdate(sqlStr); //SQL result stored in rset
+                out.println(rset);
+            } catch (SQLException error) {
+                System.out.println("ERROR " + error.getMessage());
+                out.println("ERROR"+ error.getMessage());
+            }
         } catch (Exception e) {
             System.out.println("ERROR updating");
+            out.println("ERROR"+ e.getMessage());
         }
+        out.println("SUCCESS");
     }//end doGet
 }//end class
 
