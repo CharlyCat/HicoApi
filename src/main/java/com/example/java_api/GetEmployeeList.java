@@ -6,6 +6,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
+//GET employee data from employee table
 @WebServlet("/getemployeelist")
 public class GetEmployeeList extends HttpServlet {
     @Override

@@ -6,6 +6,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
+//INSERT new employee into employeelist table
 @WebServlet("/addnewemployee")
 public class AddNewEmployee extends HttpServlet {
     @Override
@@ -51,7 +52,7 @@ public class AddNewEmployee extends HttpServlet {
 }//end class
 
 /*
-SQL Statement
+SAMPLE SQL SYNTAX:
 INSERT INTO `hico-demo-db`.`employeelist` (`employeeID`, `firstName`, `lastName`, `salutation`, `profileColour`, `gender`, `grossSalary`)
 VALUES ('003', 'Mary', 'Jane', 'Ms', 'Green', 'Female', '1250000');
  */

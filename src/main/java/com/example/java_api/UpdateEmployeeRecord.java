@@ -6,6 +6,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
+//UPDATE existing employee record in the employee table
 @WebServlet("/updateemployeerecord")
 public class UpdateEmployeeRecord extends HttpServlet {
     @Override
@@ -52,5 +53,6 @@ public class UpdateEmployeeRecord extends HttpServlet {
 
 
 /*
+SAMPLE UPDATE SYNTAX:
 UPDATE `hico-demo-db`.`employeelist` SET `firstName`='Jim' WHERE  `employeeID`='002';
  */
